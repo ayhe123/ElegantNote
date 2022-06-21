@@ -169,20 +169,34 @@
 
 \RequirePackage{appendix}
 
+\RequirePackage[framemethod=TikZ]{mdframed}
+\mdfdefinestyle{mdftheoremstyle}{
+middlelinecolor=black,
+middlelinewidth=.5pt,
+backgroundcolor=ecolor!15!geyecolor}
+\mdfdefinestyle{mdfexamplestyle}{
+topline=false,
+bottomline=false,
+rightline=false,
+middlelinecolor=ecolor!30!geyecolor,
+middlelinewidth=3pt,
+backgroundcolor=geyecolor}
+
 \ifdefstring{\ELEGANT@lang}{cn}{%
   \theoremstyle{plain}% default
-  \newtheorem{theorem}{定理}[section] %
-  \newtheorem{lemma}[theorem]{引理} %
-  \newtheorem{proposition}[theorem]{命题} %
-  \newtheorem*{corollary}{推论} %
+  \newmdtheoremenv[style=mdftheoremstyle]{theorem}{定理}[section] %
+  \newmdtheoremenv[style=mdftheoremstyle]{lemma}{引理}[section] %
+  \newmdtheoremenv[style=mdftheoremstyle]{proposition}{命题}[section] %
+  \newmdtheoremenv[style=mdftheoremstyle]{corollary}{推论}[section] %
   \theoremstyle{definition} %
-  \newtheorem{definition}{定义}[section] %
-  \newtheorem{conjecture}{猜想}[section] %
-  \newtheorem{example}{例}[section] %
+  \newmdtheoremenv[style=mdftheoremstyle]{definition}{定义}[section] %
+  \newmdtheoremenv[style=mdftheoremstyle]{conjecture}{猜想}[section] %
+  \newmdtheoremenv[style=mdfexamplestyle]{example}{例}[section] %
   \theoremstyle{remark} %
   \newtheorem*{remark}{\normalfont\bfseries 评论} %
   \newtheorem*{note}{\normalfont\bfseries 注} %
-  \newtheorem{case}{\normalfont\bfseries 案例} %
+  \newtheorem*{solution}{\normalfont\bfseries 解} %
+  \newmdtheoremenv[style=mdfexamplestyle]{case}{\normalfont\bfseries 案例} %
   \renewcommand*{\proofname}{\normalfont\bfseries\color{ecolor}证明} %
   \renewcommand\contentsname{\color{ecolor}目录}
   \renewcommand\refname{\color{ecolor}参考文献} %
@@ -198,19 +212,20 @@
 
 \ifdefstring{\ELEGANT@lang}{en}{
   \theoremstyle{plain}% default
-  \newtheorem{theorem}{Theorem}[section] %
-  \newtheorem{lemma}[theorem]{Lemma} %
-  \newtheorem{proposition}[theorem]{Proposition} %
-  \newtheorem*{corollary}{Corollary} %
+  \newmdtheoremenv[style=mdftheoremstyle]{theorem}{Theorem}[section] %
+  \newmdtheoremenv[style=mdftheoremstyle]{lemma}{Lemma}[section] %
+  \newmdtheoremenv[style=mdftheoremstyle]{proposition}{Proposition}[section] %
+  \newmdtheoremenv[style=mdftheoremstyle]{corollary}{Corollary}[section] %
   \theoremstyle{definition} %
-  \newtheorem{definition}{Definition}[section] %
-  \newtheorem{conjecture}{Conjecture}[section] %
-  \newtheorem{example}{Example}[section] %
+  \newmdtheoremenv[style=mdftheoremstyle]{definition}{Definition}[section] %
+  \newmdtheoremenv[style=mdftheoremstyle]{conjecture}{Conjecture}[section] %
+  \newmdtheoremenv[style=mdfexamplestyle]{example}{Example}[section] %
   \theoremstyle{remark} %
   \newtheorem*{remark}{Remark} %
   \newtheorem*{note}{Note} %
+  \newtheorem*{solution}{Solution} %
   \newcommand\ebibname{Bibliography}
-  \newtheorem{case}{Case} 
+  \newmdtheoremenv[style=mdfexamplestyle]{case}{Case} 
   \renewcommand*{\proofname}{%
     \normalfont\bfseries\color{ecolor} Proof}
   \newcommand\versiontext{Version: }%
@@ -249,6 +264,7 @@
 \RequirePackage{silence}
 
 % good for eye color 
+\definecolor{geyecolor}{RGB}{255,255,255}
 \ifdefstring{\ELEGANT@mode}{geye}{
   \definecolor{geyecolor}{RGB}{199,237,204}%
   \pagecolor{geyecolor}
