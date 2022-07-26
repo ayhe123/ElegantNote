@@ -172,7 +172,7 @@
 \RequirePackage[framemethod=TikZ]{mdframed}
 \mdfdefinestyle{mdftheoremstyle}{
 middlelinecolor=black,
-middlelinewidth=.5pt,
+middlelinewidth=0pt,
 backgroundcolor=ecolor!15!geyecolor}
 \mdfdefinestyle{mdfexamplestyle}{
 topline=false,
@@ -182,7 +182,13 @@ middlelinecolor=ecolor!30!geyecolor,
 middlelinewidth=3pt,
 backgroundcolor=geyecolor}
 
+\newtheoremstyle{solution}{\topsep}{\topsep}{\normalfont}{}{
+  \color{ecolor}\bfseries}{.}{
+  0.5em}{}
+
 \ifdefstring{\ELEGANT@lang}{cn}{%
+  \theoremstyle{solution}%
+  \newtheorem*{solution}{解} %
   \theoremstyle{plain}% default
   \newmdtheoremenv[style=mdftheoremstyle]{theorem}{定理}[section] %
   \newmdtheoremenv[style=mdftheoremstyle]{lemma}{引理}[section] %
@@ -195,7 +201,6 @@ backgroundcolor=geyecolor}
   \theoremstyle{remark} %
   \newtheorem*{remark}{\normalfont\bfseries 评论} %
   \newtheorem*{note}{\normalfont\bfseries 注} %
-  \newtheorem*{solution}{\normalfont\bfseries 解} %
   \newmdtheoremenv[style=mdfexamplestyle]{case}{\normalfont\bfseries 案例} %
   \renewcommand*{\proofname}{\normalfont\bfseries\color{ecolor}证明} %
   \renewcommand\contentsname{\color{ecolor}目录}
@@ -211,6 +216,8 @@ backgroundcolor=geyecolor}
   }{\relax}
 
 \ifdefstring{\ELEGANT@lang}{en}{
+  \theoremstyle{solution}%
+  \newtheorem*{solution}{Solution} %
   \theoremstyle{plain}% default
   \newmdtheoremenv[style=mdftheoremstyle]{theorem}{Theorem}[section] %
   \newmdtheoremenv[style=mdftheoremstyle]{lemma}{Lemma}[section] %
@@ -223,13 +230,16 @@ backgroundcolor=geyecolor}
   \theoremstyle{remark} %
   \newtheorem*{remark}{Remark} %
   \newtheorem*{note}{Note} %
-  \newtheorem*{solution}{Solution} %
   \newcommand\ebibname{Bibliography}
   \newmdtheoremenv[style=mdfexamplestyle]{case}{Case} 
   \renewcommand*{\proofname}{%
     \normalfont\bfseries\color{ecolor} Proof}
   \newcommand\versiontext{Version: }%
   \newcommand\updatetext{Update: }}{\relax}
+
+\surroundwithmdframed[style=mdfexamplestyle]{solution}
+\surroundwithmdframed[style=mdfexamplestyle]{proof}
+\surroundwithmdframed[style=mdftheoremstyle]{verbatim}
 
 \RequirePackage{indentfirst}
 \RequirePackage{anyfontsize}
