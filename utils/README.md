@@ -33,6 +33,8 @@ python change_style.py -c black -b geye
 
 ### 自动编译
 
+**建议使用[这个程序](https://github.com/ayhe123/LaTeX-batch-builder)，这个脚本不会再更新了**
+
 将 `auto_build.sh` 与要操作的 `.tex` 文件放在同一目录下。执行
 ```bash
 ./auto_build.sh
