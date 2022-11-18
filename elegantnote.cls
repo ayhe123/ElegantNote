@@ -455,7 +455,8 @@ backgroundcolor=geyecolor}
       \global\@topnum\z@  % Prevents figures from going at top of page.
       \@maketitle
     \fi
-    \thispagestyle{empty}\@thanks
+    %\thispagestyle{empty}
+    \@thanks
   \endgroup
   \setcounter{footnote}{0}%
   \global\let\thanks\relax
